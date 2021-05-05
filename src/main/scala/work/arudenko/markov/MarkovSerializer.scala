@@ -36,7 +36,7 @@ object MarkovSerializer {
       ("weights", a.weights.asJson)
     )
 
-  implicit def encodeAnswer[V:ClassTag](implicit valEncoder:Encoder[V]): Encoder[MarkovChain[V]] = Encoder.instance {
+  implicit def encodeBase[V:ClassTag](implicit valEncoder:Encoder[V]): Encoder[MarkovChain[V]] = Encoder.instance {
     case a: DiscreteMarkovChain[V] =>a.asJson(discreteMarkovChainEncoder)
 
   }
